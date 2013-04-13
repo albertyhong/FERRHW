@@ -68,13 +68,15 @@ def increment_guess_count(i)
 end
 
 def guesses_left(i)
-	puts "You have " + (3-i).to_s + " guesses left"
+	# puts "You have " + (3-i).to_s + " guesses left"
+	3 - i
 end
 
 while i < 3
-  puts "Please enter a number between 1 and 10."
-  guesses_left(i)
-	guess = gets.to_i
+  	puts "Please enter a number between 1 and 10."
+  	guesses_left(i)
+	guess = $stdin.gets.strip.to_i
+	i = increment_guess_count(i)
 	if guess == secret_number
 		puts messages[:win]
 		correct_answer = true
@@ -83,10 +85,12 @@ while i < 3
 		# guesses_left -= 1
 		increment_guess_count(i)
 		puts messages[:too_low]
+		guesses_left(i)
 	elsif guess > secret_number
 		# guesses_left -= 1
 		increment_guess_count(i)
 		puts messages[:too_high]
+		guesses_left(i)
 	end
 end
 

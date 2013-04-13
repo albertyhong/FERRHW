@@ -67,6 +67,7 @@ guesses_left = 3
 
 # Secret number generated
 set_of_numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# set_of_numbers = (1..10).to_a
 secret_number = set_of_numbers.sample
 
 # Messages for user
