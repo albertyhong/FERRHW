@@ -15,10 +15,12 @@ class Game
 	# Creates a new instance of the SecretNumber class and assigns it to the secret_number. Don't forget to pass along the
 	# necessary parameters.
   	# initializes the current guess to nil
-  def initialize(guesses_allowed = 3, set_of_numbers)
-    @guesses_allowed = guesses_allowed
-    @guess_counter = 0
-
+  def initialize(guesses_allowed, set_of_numbers)
+    @guesses_allowed = guesses_allowed || 3
+    @current_guess_counter = 0
+    @player = Player.new()
+    @secret_number = SecretNumber.new(set_of_numbers)
+    @current_guess = nil
   end
   
 
@@ -39,10 +41,13 @@ class Game
 	# If at the end of the loop they still did not guess correctly, tell the player that they have lost using the
 	# `@@messages` class variable and tell them the secret number.
   def start_game
+    puts "\nWelcome to the Secret Number Game!"
+    print_created_by
 
+    puts "\nWhat is your name?"
+    @player.name = $stdin.gets.chomp
 
-
-
+    puts "\nYou will have #{@guesses_allowed} guesses to pick the correct number within a range of #{@set_of_numbers[0]} - #{@set_of_numbers[@set_of_numbers.length-1]}"
   end
 
 

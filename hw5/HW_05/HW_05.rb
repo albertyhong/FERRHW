@@ -24,13 +24,14 @@
 ###############################################################################
 
 #	Include the Player, SecretNumber, and Game classes
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'player'
-require 'secret_number'
-require 'game'
+# $LOAD_PATH.unshift(File.dirname(__FILE__))
+require_relative 'player'
+require_relative 'secret_number'
+require_relative 'game'
 
 #   Instantiate a new Game (using your preferred number of guesses, range of numbers)
-Game.new(3, 20)
+game = Game.new(3, (0..20))
 
 #   Start the Game. 
-
+game.start_game
+puts "Thanks for playing"
